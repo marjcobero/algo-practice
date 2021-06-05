@@ -106,3 +106,20 @@ var kidsWithCandies = function(candies, extraCandies){
 };
 
 console.log(kidsWithCandies([2,3,5,1,3], 3));
+
+// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum
+
+var maxSubArray = function(nums) {
+    var max_sum = nums[0];
+    var sum = 0;
+    for (var i=0; i<nums.length; i++) {
+        sum += nums[i];
+        max_sum = Math.max(sum, max_sum)
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+    return max_sum;
+};
+
+console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
