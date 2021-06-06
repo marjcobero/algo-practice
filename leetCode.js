@@ -18,7 +18,8 @@
 var defangIPaddr = function(address) {
 	return address.split('.').join('[.]')};
 	var result = defangIPaddr("1.1.1.1");
-console.log(result)
+
+    console.log(result)
 
 
 //5/22/2021
@@ -63,7 +64,7 @@ var shuffle = function(nums, n) {
 };
 
 
-/5/29/2021
+// 5/29/2021
 //Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
 // Return the running sum of nums.
 
@@ -76,7 +77,8 @@ var runningSum = function(nums) {
     }
     return newArr;
 };
-console.log(runningSum([1,2,3,4]));
+
+//console.log(runningSum([1,2,3,4]));
 
 
 //Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the -ith kid has.
@@ -105,9 +107,10 @@ var kidsWithCandies = function(candies, extraCandies){
     return newArr;
 };
 
-console.log(kidsWithCandies([2,3,5,1,3], 3));
+//console.log(kidsWithCandies([2,3,5,1,3], 3));
 
-// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum
+// 06.05.21
+// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
 var maxSubArray = function(nums) {
     var max_sum = nums[0];
@@ -122,4 +125,32 @@ var maxSubArray = function(nums) {
     return max_sum;
 };
 
-console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+//console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+
+// 06.06.21
+// The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+//@param {string} s
+//@param {number} numRows
+//@return {string}
+
+var convert = function (s, numRows) {
+    var row_pos = 0;
+    var row_adj = 1;
+    var newArr = [];
+
+    for (var i = 0; i<s.length; i++) {
+        rowdata = newArr[row_pos];
+        if (rowdata == undefined) {rowdata = [];}
+        rowdata.push(s[i]);
+        newArr[row_pos] = rowdata;
+
+        row_pos += row_adj;
+        if (row_pos == 0) {row_adj=1;}
+        if (row_pos == numRows-1) {row_adj=-1;}
+
+    }
+
+    return newArr.join("").replace(/,/g, '');
+}
+
+console.log(convert("PAYPALISHIRING", 3))
