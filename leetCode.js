@@ -178,3 +178,26 @@ var longestCommonPrefix = function(strs) {
 };
 
 console.log(longestCommonPrefix(["flower","flow","flight"]))
+
+
+//06.13.21
+//Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+//Notice that you may not slant the container.
+
+var maxArea = function(height) {
+    var max = 0;
+    var front = 0;
+    var back = height.length - 1;
+
+    while (back - front > 0) {
+        max = Math.max(max, (Math.min(height[front], height[back]) * (back-front)))
+        if (height[front] > height[back]) {
+            back--;
+        } else {
+            front++;
+        }
+    }
+    return max;
+};
+
+console.log(maxArea([1,8,6,2,5,4,8,3,7]))
