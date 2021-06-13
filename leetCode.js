@@ -154,3 +154,27 @@ var convert = function (s, numRows) {
 }
 
 console.log(convert("PAYPALISHIRING", 3))
+
+
+//06.13.21
+//Write a function to find the longest common prefix string amongst an array of strings.
+//If there is no common prefix, return an empty string "".
+var longestCommonPrefix = function(strs) {
+    if (strs.length == 1) {return strs[0]}
+    match = ''
+    for (i=0; i<strs[0].length; i++){
+        pfx = strs[0].substring(0, i+1)
+        count_match = 0;
+        for (j=0; j<strs.length; j++){
+            if ( pfx == strs[j] || strs[j].startsWith(pfx)){
+                count_match ++;
+            }
+        }
+        if (count_match == strs.length){
+            match = pfx
+        }
+    }
+    return match
+};
+
+console.log(longestCommonPrefix(["flower","flow","flight"]))
