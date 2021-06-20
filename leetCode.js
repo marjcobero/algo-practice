@@ -201,3 +201,34 @@ var maxArea = function(height) {
 };
 
 console.log(maxArea([1,8,6,2,5,4,8,3,7]))
+
+// 06.20.21
+//You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+// Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+var numJewelsInStones = function(jewels, stones) {
+    var count = 0
+    for (var i = 0; i < stones.length; i++) {
+        if (jewels.search(stones[i])>=0){
+            count++;
+        }
+    }
+    return count;
+};
+
+console.log(numJewelsInStones("aA", "aAAbbbb"))
+
+// 06.20.21
+//You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+//A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+
+var maximumWealth = function(accounts) {
+    var wealth = []
+    for (var i = 0; i < accounts.length; i++){
+        let sum = accounts[i].reduce((a,b) => {return a + b;}, 0);
+        wealth.push(sum);
+    }
+    return Math.max(...wealth);
+};
+
+console.log(maximumWealth([[1,2,3], [3,2,1]]))
